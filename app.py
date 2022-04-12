@@ -10,12 +10,18 @@ conn = pyodbc.connect('Driver={SQL Server};'
 cursor=conn.cursor()
 cursor.execute("select * from inventory") 
 data = cursor.fetchall() #data from database
+cursor.execute("SELECT column_name FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'inventory'") 
+content = cursor.fetchall() #data from database
 @app.route('/')
 def index():
     return render_template("form.html")
 @app.route('/example.html/')
-def example(): 
-    return render_template("example.html",value=data)
+def invenotory(): 
+    return render_template("example.html",value=data,value1=content)
+@app.route('/sales.html/')
+def sales():
+    return render_template("sales.html")
+    
 if __name__ == '__main__':
     app.run(debug=True) 
 
