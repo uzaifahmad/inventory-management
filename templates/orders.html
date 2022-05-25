@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+<h2 align="center">Orders</h2>
+<div class="container mt-5 text-justify">
+    <table class="table table-bordered align-middle">
+        <thead class="thead-dark">
+          <tr class="align-middle text-center">
+            <th scope="col">Invoice ID</th>
+            <th scope="col">Customer Name</th>
+            <th scope="col">Invoice Amount</th>
+            <th scope="col">Invoice Date</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in order %}
+          <tr>
+            <td scope="row">{{i[0]}}</td>
+            <td scope="row">{{i[1]}}</td>
+            <td scope="row">{{i[2]}} ₹</td>
+            <td scope="row">{{i[3]}} </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+
+{% endblock %}
